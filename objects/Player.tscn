@@ -1,0 +1,134 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://objects/scripts/player.gd" type="Script" id=1]
+[ext_resource path="res://assets/Main/Idle/Personaje De Atrás.png" type="Texture" id=2]
+[ext_resource path="res://assets/Main/Idle/Personaje De Perfil.png" type="Texture" id=3]
+[ext_resource path="res://assets/Main/Idle/Personaje De Frente.png" type="Texture" id=4]
+[ext_resource path="res://assets/Sounds/punch.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/Sounds/walk1.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/Sounds/walk2.wav" type="AudioStream" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "IdleUp",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "IdleRight",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "IdleDown",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 27.9213 )
+
+[node name="Player" type="KinematicBody2D" index="0"]
+
+rotation = 0.00129248
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+MAX_SPEED = 500
+acceleration = 50
+FRICTION = 20
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+
+frames = SubResource( 1 )
+animation = "IdleDown"
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( 0.232729, 5.25505 )
+shape = SubResource( 2 )
+
+[node name="Right" type="RayCast2D" parent="." index="2"]
+
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 50, 0 )
+collision_mask = 1
+_sections_unfolded = [ "Transform" ]
+
+[node name="Down" type="RayCast2D" parent="." index="3"]
+
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 0, 50 )
+collision_mask = 1
+
+[node name="Left" type="RayCast2D" parent="." index="4"]
+
+enabled = true
+exclude_parent = true
+cast_to = Vector2( -50, 0 )
+collision_mask = 1
+
+[node name="Up" type="RayCast2D" parent="." index="5"]
+
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 0, -50 )
+collision_mask = 1
+
+[node name="MeleeCool" type="Timer" parent="." index="6"]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = true
+autostart = false
+
+[node name="Step" type="Timer" parent="." index="7"]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = true
+autostart = false
+
+[node name="Punch" type="AudioStreamPlayer2D" parent="." index="8"]
+
+stream = ExtResource( 5 )
+volume_db = -5.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="Walk1" type="AudioStreamPlayer2D" parent="." index="9"]
+
+stream = ExtResource( 6 )
+volume_db = -25.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="Walk2" type="AudioStreamPlayer2D" parent="." index="10"]
+
+stream = ExtResource( 7 )
+volume_db = -25.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+
