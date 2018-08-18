@@ -8,6 +8,6 @@ func throw(sp,to):
 	angle = (to - position).normalized()
 
 func _physics_process(delta):
-	move_and_slide(Vector2(100,100))
-	if position.x < 0 or position.y < 0 or position.x > 1280 or position.y > 20:
+	move_and_slide(angle*speed)
+	if position.x < 0 or position.y < 0 or position.x > 1280 or position.y > 720:
 		get_parent().remove_child(self)

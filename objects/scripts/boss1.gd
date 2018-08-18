@@ -12,12 +12,14 @@ onready var player = get_parent().get_node("Player")
 func _ready():
 	life = max_health
 	HB.max_value = max_health
-	throw_big()
+	
 
 func _physics_process(delta):
 	HB.value = life
+	throw_big()
 
 func throw_big():
 	var p = proyectil2.instance()
+	p.position = position
 	p.throw(400,player.position)
-	add_child(p)
+	get_parent().add_child(p)
