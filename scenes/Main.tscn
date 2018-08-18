@@ -28,7 +28,7 @@ custom_solver_bias = 0.0
 a = Vector2( 0, 720 )
 b = Vector2( 1280, 720 )
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" index="0"]
 
 [node name="Player" parent="." index="0" instance=ExtResource( 1 )]
 

@@ -32,7 +32,7 @@ animations = [ {
 custom_solver_bias = 0.0
 extents = Vector2( 32, 27.9213 )
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D"]
 
 rotation = 0.00129248
 input_pickable = false
@@ -47,7 +47,7 @@ FRICTION = 20
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 
 frames = SubResource( 1 )
-animation = "IdleDown"
+animation = "IdleRight"
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
@@ -59,7 +59,7 @@ shape = SubResource( 2 )
 
 enabled = true
 exclude_parent = true
-cast_to = Vector2( 50, 0 )
+cast_to = Vector2( 75, 0 )
 collision_mask = 1
 _sections_unfolded = [ "Transform" ]
 
@@ -67,14 +67,14 @@ _sections_unfolded = [ "Transform" ]
 
 enabled = true
 exclude_parent = true
-cast_to = Vector2( 0, 50 )
+cast_to = Vector2( 0, 75 )
 collision_mask = 1
 
 [node name="Left" type="RayCast2D" parent="." index="4"]
 
 enabled = true
 exclude_parent = true
-cast_to = Vector2( -50, 0 )
+cast_to = Vector2( -75, 0 )
 collision_mask = 1
 
 [node name="Up" type="RayCast2D" parent="." index="5"]
