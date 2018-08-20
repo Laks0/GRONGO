@@ -49,6 +49,7 @@ proyectil2 = ExtResource( 3 )
 
 frames = SubResource( 1 )
 animation = "Idle"
+frame = 1
 playing = true
 _sections_unfolded = [ "Visibility" ]
 

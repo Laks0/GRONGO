@@ -10,8 +10,8 @@ config_version=3
 
 [application]
 
-config/name="ECGameJam"
-run/main_scene="res://scenes/Main.tscn"
+config/name="1BRsh"
+run/main_scene="res://scenes/Inicio.tscn"
 config/icon="res://icon.png"
 
 [display]

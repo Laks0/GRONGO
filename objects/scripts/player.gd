@@ -23,7 +23,7 @@ var life = 0
 onready var HB = get_parent().get_node("HUD/Player/Life")
 
 func _ready():
-	life = 3
+	life = 10
 	HB.max_value = life
 
 func _physics_process(delta):
@@ -139,6 +139,9 @@ func _physics_process(delta):
 		elif Input.is_action_just_pressed("up"):
 			$AnimatedSprite.animation = "WalkUp"
 			$AnimatedSprite.flip_h = false
+	
+	if life <= 0:
+		get_tree().change_scene("Scenes/Lose.tscn")
 	
 	### SOUNDS ###
 	

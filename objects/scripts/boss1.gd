@@ -38,21 +38,6 @@ func _physics_process(delta):
 					attack += 1
 					$Wait1_2.start()
 			elif $Charge1_1.is_stopped():
-				if life <= max_health/2:
-					var count = 10 #How many proyectiles
-					var angle_step = 2*PI / count
-					if $Charge1_2.is_stopped():
-						var angle = 0
-						for i in range(0,count):
-							var direction = Vector2(cos(angle), sin(angle))
-							var from = position + 50 * direction
-							var to = position + 100 * direction
-							
-							throw_small(from,to)
-							
-							angle += angle_step
-						throw_small(position,player.position)
-						$Charge1_2.start()
 				attacked += 1
 				throw_big()
 				if attacked < 5:
@@ -105,6 +90,9 @@ func _physics_process(delta):
 		$AnimatedSprite.animation = "Atq1"
 	else:
 		$AnimatedSprite.animation = "Atq2"
+	
+	if life <= 0:
+		get_tree().change_scene("Scenes/Win.tscn")
 
 func throw_big():
 	var p = proyectil2.instance()
