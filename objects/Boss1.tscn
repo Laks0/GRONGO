@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://objects/scripts/boss1.gd" type="Script" id=1]
 [ext_resource path="res://objects/Proyectil.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://assets/Boss/Jefe Respirando 2.png" type="Texture" id=5]
 [ext_resource path="res://assets/Boss/Jefe Atacando Fase 2.png" type="Texture" id=6]
 [ext_resource path="res://assets/Boss/Jefe Atacando Fase 1.png" type="Texture" id=7]
+[ext_resource path="res://assets/Sounds/shot1.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/Sounds/shot2.wav" type="AudioStream" id=9]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -49,7 +51,6 @@ proyectil2 = ExtResource( 3 )
 
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 1
 playing = true
 _sections_unfolded = [ "Visibility" ]
 
@@ -98,6 +99,28 @@ process_mode = 1
 wait_time = 3.5
 one_shot = true
 autostart = true
+
+[node name="Shot1" type="AudioStreamPlayer2D" parent="." index="8"]
+
+stream = ExtResource( 8 )
+volume_db = -20.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="Shot2" type="AudioStreamPlayer2D" parent="." index="9"]
+
+stream = ExtResource( 9 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
 
 [connection signal="timeout" from="Wait1_2" to="." method="_on_Wait1_2_timeout"]
 

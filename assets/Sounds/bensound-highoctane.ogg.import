@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bensound-highoctane.ogg-b1bd29a707b809ab7da6c07a6482e031.oggstr"
+
+[deps]
+
+source_file="res://assets/Sounds/bensound-highoctane.ogg"
+dest_files=[ "res://.import/bensound-highoctane.ogg-b1bd29a707b809ab7da6c07a6482e031.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -23,7 +23,7 @@ var life = 0
 onready var HB = get_parent().get_node("HUD/Player/Life")
 
 func _ready():
-	life = 10
+	life = 12
 	HB.max_value = life
 
 func _physics_process(delta):
@@ -92,6 +92,8 @@ func _physics_process(delta):
 					if $Invensibility.is_stopped():
 						life -= 1
 						$Invensibility.start()
+						$Hit.play()
+						movement += (position - col.position) * 20
 						break
 	if $Invensibility.is_stopped():
 		$AnimatedSprite.modulate = Color(1,1,1,1)

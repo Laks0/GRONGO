@@ -99,9 +99,11 @@ func throw_big():
 	p.position = position
 	p.throw(600,player.position)
 	get_parent().add_child(p)
+	$Shot2.play()
 
 func throw_small(from, to):
 	var p = proyectil.instance()
 	p.position = from
 	p.throw(300,to)
 	get_parent().add_child(p)
+	$Shot1.play()

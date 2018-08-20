@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://objects/scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/Main/Personaje De Atrás Caminando.png" type="Texture" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://assets/Sounds/punch.wav" type="AudioStream" id=26]
 [ext_resource path="res://assets/Sounds/walk1.wav" type="AudioStream" id=27]
 [ext_resource path="res://assets/Sounds/walk2.wav" type="AudioStream" id=28]
+[ext_resource path="res://assets/Sounds/hit.wav" type="AudioStream" id=29]
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -83,7 +84,7 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -105,7 +106,7 @@ _sections_unfolded = [ "Transform" ]
 
 frames = SubResource( 1 )
 animation = "PunchDown"
-frame = 5
+frame = 1
 playing = true
 _sections_unfolded = [ "Transform", "Visibility" ]
 
@@ -189,7 +190,18 @@ attenuation = 1.0
 bus = "Master"
 area_mask = 1
 
-[node name="Downhit" type="RayCast2D" parent="." index="11" groups=[
+[node name="Hit" type="AudioStreamPlayer2D" parent="." index="11"]
+
+stream = ExtResource( 29 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="Downhit" type="RayCast2D" parent="." index="12" groups=[
 "Hit",
 ]]
 
@@ -199,7 +211,7 @@ exclude_parent = true
 cast_to = Vector2( 0, 50 )
 collision_mask = 1
 
-[node name="Lefthit" type="RayCast2D" parent="." index="12" groups=[
+[node name="Lefthit" type="RayCast2D" parent="." index="13" groups=[
 "Hiy",
 ]]
 
@@ -209,7 +221,7 @@ exclude_parent = true
 cast_to = Vector2( -50, 0 )
 collision_mask = 1
 
-[node name="Uphit" type="RayCast2D" parent="." index="13" groups=[
+[node name="Uphit" type="RayCast2D" parent="." index="14" groups=[
 "Hit",
 ]]
 
@@ -219,7 +231,7 @@ exclude_parent = true
 cast_to = Vector2( 0, -30 )
 collision_mask = 1
 
-[node name="Righthit" type="RayCast2D" parent="." index="14" groups=[
+[node name="Righthit" type="RayCast2D" parent="." index="15" groups=[
 "Hit",
 ]]
 
@@ -229,7 +241,7 @@ exclude_parent = true
 cast_to = Vector2( 50, 0 )
 collision_mask = 1
 
-[node name="DLhit" type="RayCast2D" parent="." index="15" groups=[
+[node name="DLhit" type="RayCast2D" parent="." index="16" groups=[
 "Hit",
 ]]
 
@@ -239,7 +251,7 @@ exclude_parent = true
 cast_to = Vector2( -50, 50 )
 collision_mask = 1
 
-[node name="ULhit" type="RayCast2D" parent="." index="16" groups=[
+[node name="ULhit" type="RayCast2D" parent="." index="17" groups=[
 "Hit",
 ]]
 
@@ -249,7 +261,7 @@ exclude_parent = true
 cast_to = Vector2( -50, -30 )
 collision_mask = 1
 
-[node name="URhit" type="RayCast2D" parent="." index="17" groups=[
+[node name="URhit" type="RayCast2D" parent="." index="18" groups=[
 "Hit",
 ]]
 
@@ -259,7 +271,7 @@ exclude_parent = true
 cast_to = Vector2( 50, -30 )
 collision_mask = 1
 
-[node name="DRhit" type="RayCast2D" parent="." index="18" groups=[
+[node name="DRhit" type="RayCast2D" parent="." index="19" groups=[
 "Hit",
 ]]
 
@@ -269,7 +281,7 @@ exclude_parent = true
 cast_to = Vector2( 50, 50 )
 collision_mask = 1
 
-[node name="Invensibility" type="Timer" parent="." index="19"]
+[node name="Invensibility" type="Timer" parent="." index="20"]
 
 process_mode = 1
 wait_time = 2.0
